@@ -1,5 +1,5 @@
 # Silverstripe - Google Tag Manager
-Tag Manager integration for Silverstripe
+Google Tag Manager Version 2 integration for Silverstripe
 
 Author: Andrew Mc Cormack
 
@@ -27,7 +27,6 @@ Run composer install and composer update to download the module
 Add the following function to the Page_Controller in your Page.php file located in your code folder. Replace XXXXX with the ID of your container which you can get from the Tag Manager interface. It takes the format GTM-XXXXX, however you don't need to include the GTM part.
 
 ```php  
-<?php
 public function TagManager()
 {
 	return GTM::snippet('XXXXX');
@@ -41,7 +40,7 @@ In your Page.ss template add $TagManager just after the opening body tag
 $TagManager
 ```
 
-If you wish to load it depending on environemnt you can do something like below. Generally you will only want tag manager to load in a production environemnt unless you are debugging in a local development envuronment.
+If you wish to load it depending on environment you can do something like below. Generally you will only want tag manager to load in a production environment unless you are debugging in a local development environment.
 
 ```php  
 <% if IsLive %>
@@ -52,6 +51,20 @@ $TagManager
 Append the following to your app URL  
 **/dev/build?flush=all**  
 This rebuilds your database and clears your cache.
+
+## Usage
+
+To push a key value pair to the dataLayer you can simply call the data method within your controller files. You can call the method as many times as you want to push values to the data layer.
+
+```php  
+GTM::data('key','value')
+```
+The key value pairs will generate the necessary data layer JavaScript code
+
+```javascript  
+<script>dataLayer = [{'key' : 'value'}];</script>
+```
+
 
 ## About
 
