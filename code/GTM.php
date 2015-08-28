@@ -46,6 +46,9 @@ class GTM {
 		self::$val .= 'dataLayer = [{';
 
 		self::$val .= self::buildData();
+		if(!empty(self::$data) && !empty(self::$ecommerce)) :
+			self::$val.= ',';
+		endif;
 		self::$val .= $ecommerce->purchase(self::$ecommerce);
 		
 		self::$val .= '}];';

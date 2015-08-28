@@ -11,17 +11,14 @@ class EnhancedEcommerce {
 
 	private static function purchase($ecommerce)
 	{
-		if(!empty(self::$ecommerce)) :
-			if(!empty(self::$data)) :
-				self::$val.= ',';
-			endif;
+		if(!empty($ecommerce)) :
 			$purchase  = "'ecommerce' : {";
 			$purchase .= "'purchase' : {";
 
 			$i = 1;
 			$purchase .= "'actionField' : {";
 			foreach($ecommerce['fields'] as $key => $value) :
-				$total = count(self::$ecommerce['fields']);
+				$total = count($ecommerce['fields']);
 
 				$purchase .= "'".$key."' : '".$value."'";
 				$purchase .= $i < $total ? ',' : '';
@@ -50,6 +47,8 @@ class EnhancedEcommerce {
 
 			$purchase .= "}";
 			$purchase .= "}";
+
+			return $purchase;
 		endif;
 	}
 }
