@@ -1,2 +1,2 @@
-# Silverstripe-Google-Tag-Manager-V2
+# Silverstripe - Google Tag Manager
 Tag Manager integration for Silverstripe

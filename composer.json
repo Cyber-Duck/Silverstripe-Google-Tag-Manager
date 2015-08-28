@@ -1,0 +1,27 @@
+{
+    "name": "Andrew-Mc-Cormack/Silverstripe-Google-Tag-Manager",
+    "description": "Add Tag Manager and data layer support for Silverstripe",
+    "type": "silverstripe-module",
+    "homepage": "http://github.com/Andrew-Mc-Cormack/Silverstripe-Google-Tag-Manager",
+    "keywords": ["silverstripe","google tag manager"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Mc Cormack",
+            "email": "andrewm@cyber-duck.co.uk"
+        }
+    ],
+    "support": {
+        "issues": "http://github.com/Andrew-Mc-Cormack/Silverstripe-Google-Tag-Manager/issues"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "silverstripe/framework": "3.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.7.*"
+    },
+    "extra": {
+        "installer-name": "gtm"
+    }
+}
