@@ -65,7 +65,7 @@ class GTM {
 			return false;
 		endif;
 
-		$javascript .= '<script>dataLayer = [{';
+		$javascript = '<script>dataLayer = [{';
 
 		// add any data layer values populated from the data method
 		$javascript .= self::buildData();
