@@ -141,13 +141,16 @@ class GTM {
 		if(!empty(self::$data)) :
 
 			$total = count(self::$data);
+			$javascript = '';
 			$i = 1;
 
 			foreach(self::$data as $key => $value) :
-				self::$val .= "'".$key."' : '".$value."'";
-				self::$val .= $i < $total ? ',' : '';
+				$javascript .= "'".$key."' : '".$value."'";
+				$javascript .= $i < $total ? ',' : '';
 				$i++;
 			endforeach;
+
+			return $javascript;
 		endif;
 	}
 }
