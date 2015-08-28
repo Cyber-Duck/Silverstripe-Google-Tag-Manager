@@ -106,48 +106,4 @@ class GTM {
 			endforeach;
 		endif;
 	}
-
-	private static function buildOrder()
-	{
-		if(!empty(self::$ecommerce)) :
-			if(!empty(self::$data)) :
-				self::$val.= ',';
-			endif;
-			self::$val .= "'ecommerce' : {";
-			self::$val .= "'purchase' : {";
-
-			$i = 1;
-			self::$val .= "'actionField' : {";
-			foreach(self::$ecommerce['fields'] as $key => $value) :
-				$total = count(self::$ecommerce['fields']);
-
-				self::$val .= "'".$key."' : '".$value."'";
-				self::$val .= $i < $total ? ',' : '';
-
-				$i++;
-			endforeach;
-			self::$val .= '},';
-
-			self::$val .= "'products' : [";
-			$i = 1;
-			foreach(self::$ecommerce['items'] as $item) :
-				self::$val .= "{";
-
-				$e = 1;
-				foreach($item as $key => $value) :
-					self::$val .= "'".$key."' : '".$value."'";
-					self::$val .= $e < count($item) ? ',' : '';
-					$e++;
-				endforeach;
-				self::$val .= "}";
-				self::$val .= $i < count(self::$ecommerce['items']) ? ',' : '';
-
-				$i++;
-			endforeach;
-			self::$val .= ']';
-
-			self::$val .= "}";
-			self::$val .= "}";
-		endif;
-	}
 }
