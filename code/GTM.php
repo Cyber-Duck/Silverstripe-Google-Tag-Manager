@@ -61,7 +61,7 @@ class GTM {
 	 */
 	public static function dataLayer()
 	{
-		if(empty($data) && empty($ecommerce)) :
+		if(empty(self::$data) && empty(self::$ecommerce)) :
 			return false;
 		endif;
 
