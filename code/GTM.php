@@ -65,21 +65,24 @@ class GTM {
 			return false;
 		endif;
 
-		$ecommerce = new EnhancedEcommerce();
+		$javascript .= '<script>dataLayer = [{';
 
-		self::$val .= '<script>';
-		self::$val .= 'dataLayer = [{';
-
-		self::$val .= self::buildData();
+		// add any data layer values populated from the data method
+		$javascript .= self::buildData();
 		if(!empty(self::$data) && !empty(self::$ecommerce)) :
-			self::$val.= ',';
+			$javascript.= ',';
 		endif;
-		self::$val .= $ecommerce->purchase(self::$ecommerce);
-		
-		self::$val .= '}];';
-		self::$val .= '</script>';
 
-		return self::$val;
+		// add enhanced ecommerce data layer values if they are set
+		if(!empty(self::$ecommerce)) :
+			$ecommerce = new EnhancedEcommerce();
+
+			$javascript .= $ecommerce->purchase(self::$ecommerce);
+		endif;
+		
+		$javascript .= '}];</script>';
+
+		return $javascript;
 	}
 
 	/**
