@@ -1,9 +1,10 @@
 <?php
 /**
- * Googel Tag Manager
+ * Google Tag Manager
+ * A module to allow the easy implementation of Google Tag Manager within a framework
  *
  * @package silverstripe-blacklist
- * @license MIT License https://github.com/Andrew-Mc-Cormack/Silverstripe-Blacklist/blob/master/LICENSE
+ * @license MIT License https://github.com/Cyber-Duck/Silverstripe-Google-Tag-Manager/blob/master/LICENSE
  * @author  <andrewm@cyber-duck.co.uk>
  **/
 class GTM {
@@ -35,11 +36,17 @@ class GTM {
 
 	public static function dataLayer()
 	{
+		if(empty($data) && empty($ecommerce)) :
+			return false;
+		endif;
+
+		$ecommerce = new EnhancedEcommerce();
+
 		self::$val .= '<script>';
 		self::$val .= 'dataLayer = [{';
 
 		self::$val .= self::buildData();
-		self::$val .= self::buildOrder();
+		self::$val .= $ecommerce->purchase(self::$ecommerce);
 		
 		self::$val .= '}];';
 		self::$val .= '</script>';
