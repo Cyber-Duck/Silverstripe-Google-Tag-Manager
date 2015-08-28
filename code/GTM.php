@@ -9,10 +9,24 @@
  **/
 class GTM {
 
+	/**
+	 * @var array $data Our datalayer key value pairs
+	 */
 	private static $data = array();
 
+	/**
+	 * @var array $ecommerce Our ecommerce transaction items
+	 */
 	private static $ecommerce = array();
 
+	/**
+	 * Returns our data layer and Google Tag Manager snippet. Inject in your container
+	 * ID in the format XXXXX.
+	 *
+	 * @param string $id Your container ID
+	 *
+	 * @return string
+	 */
 	public static function snippet($id)
 	{
 		return self::dataLayer().
@@ -27,11 +41,24 @@ class GTM {
 		<!-- End Google Tag Manager -->';
 	}
 
+	/**
+	 * Assign a data layer key value pair
+	 *
+	 * @param string $key   The array key
+	 * @param string $value The array value
+	 *
+	 * @return void
+	 */
 	public static function data($key, $value)
 	{
 		self::$data[$key] = $value;
 	}
 
+	/**
+	 * Create the data layer code
+	 *
+	 * @return string
+	 */
 	public static function dataLayer()
 	{
 		if(empty($data) && empty($ecommerce)) :
@@ -55,8 +82,14 @@ class GTM {
 		return self::$val;
 	}
 
+	/**
+	 * Set the ecommerce transaction fields
+	 *
+	 * @return void
+	 */
 	public static function order($params)
 	{
+		// required fields to check
 		$defaults = array(
 			'id'          => '',
 			'affiliation' => '',
@@ -74,6 +107,11 @@ class GTM {
 		self::$ecommerce['fields'] = $params;
 	}
 
+	/**
+	 * Set fields for a product within a purchase
+	 *
+	 * @return void
+	 */
 	public static function orderItem($params)
 	{
 		$defaults = array(
@@ -90,6 +128,11 @@ class GTM {
 		self::$ecommerce['items'][] = $params;
 	}
 
+	/**
+	 * Creates a json array formatted string containing our data layer key value pairs
+	 *
+	 * @return void
+	 */
 	private static function buildData()
 	{
 		if(!empty(self::$data)) :

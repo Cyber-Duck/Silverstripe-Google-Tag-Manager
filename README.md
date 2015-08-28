@@ -5,6 +5,7 @@ Author: Andrew Mc Cormack
 
 - Populate the Tag Manger data layer easily
 - Generate ecommerce transaction data layer values
+- Makes setting up user ID tracking much easier
 
 ## Installation
 Add the following to your composer.json file
@@ -33,18 +34,16 @@ public function TagManager()
 }
 ```
 
-In your Page.ss template add the following just after the opening body tag
+In your Page.ss template add $TagManager just after the opening body tag
 
 ```php  
-<?php
 <body>
 $TagManager
 ```
 
-if you wish to load it depending on environemnt you can do something like below. Generally you will only want tag manager to load in a production environemnt unless you are debugging in a local development envuronment.
+If you wish to load it depending on environemnt you can do something like below. Generally you will only want tag manager to load in a production environemnt unless you are debugging in a local development envuronment.
 
 ```php  
-<?php
 <% if IsLive %>
 $TagManager
 <% end_if %>

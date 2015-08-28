@@ -9,6 +9,13 @@
  **/
 class EnhancedEcommerce {
 
+	/**
+	 * Create an ecommerce transaction consisteing of the trnsaction fields and order items
+	 *
+	 * @param array $ecommerce A multidimensional array containing our purchased items
+	 * 
+	 * @return string
+	 */
 	private static function purchase($ecommerce)
 	{
 		if(!empty($ecommerce)) :
@@ -16,6 +23,7 @@ class EnhancedEcommerce {
 			$purchase .= "'purchase' : {";
 
 			$i = 1;
+			// Set the transaction order fields
 			$purchase .= "'actionField' : {";
 			foreach($ecommerce['fields'] as $key => $value) :
 				$total = count($ecommerce['fields']);
@@ -29,10 +37,12 @@ class EnhancedEcommerce {
 
 			$purchase .= "'products' : [";
 			$i = 1;
+			// lopp through our products
 			foreach($ecommerce['items'] as $item) :
 				$purchase .= "{";
 
 				$e = 1;
+				// loop through the indivdual product attributes
 				foreach($item as $key => $value) :
 					$purchase .= "'".$key."' : '".$value."'";
 					$purchase .= $e < count($item) ? ',' : '';
