@@ -13,8 +13,6 @@ class GTM {
 
 	private static $ecommerce = array();
 
-	private static $val;
-
 	public static function snippet($id)
 	{
 		return self::dataLayer().
