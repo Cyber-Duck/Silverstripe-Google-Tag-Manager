@@ -87,9 +87,7 @@ class GTM {
 
 		// add enhanced ecommerce data layer values if they are set
 		if(!empty(self::$purchase)) :
-			if(!empty(self::$data)) :
-				$javascript.= ',';
-			endif;
+			$javascript.= self::spacer(self::$data);
 
 			$ecommerce = new EnhancedEcommerce();
 
@@ -99,6 +97,18 @@ class GTM {
 		$javascript .= '}];</script>';
 
 		return $javascript;
+	}
+	/**
+	 * Adds a , between a JSON array / set of data layer values
+	 *
+	 * @param array
+	 *
+	 * @return string
+	 */
+
+	private static function spacer($data)
+	{
+		return !empty($data) ? ',' : '';
 	}
 
 	/**
