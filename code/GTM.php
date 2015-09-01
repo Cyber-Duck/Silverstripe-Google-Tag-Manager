@@ -22,9 +22,14 @@ class GTM {
 	private static $data = array();
 
 	/**
-	 * @var array $purchase Contains a purchase fields and products
+	 * @var array $purchase Contains purchase fields and products
 	 */
 	private static $purchase = array();
+
+	/**
+	 * @var array $refunds Contains any refunded products
+	 */
+	private static $refunds = array();
 
 	/**
 	 * Returns the complete data layer and Google Tag Manager snippet. Inject in 
@@ -74,45 +79,45 @@ class GTM {
 	 */
 	public static function dataLayer()
 	{
-		// if no data layer variables are set the data layer is not built
-		if(empty(self::$data) && empty(self::$purchase)) :
-			return false;
-		endif;
-
 		$javascript = '<script>dataLayer = [{';
 
-		// add any data layer values populated from the data method
-		$javascript .= self::buildData();
-		
+		// create an enhanced ecommerce object
+		$EnhancedEcommerce = new EnhancedEcommerce();
 
-		// add enhanced ecommerce data layer values if they are set
-		if(!empty(self::$purchase)) :
-			$javascript.= self::spacer(self::$data);
+		// check for any ecommerce data layer values combine their arrays
+		$ecommerce = implode(',',
+			array_filter(
+				array(
+					$EnhancedEcommerce->purchase(self::$purchase),
+					$EnhancedEcommerce->refund(self::$refunds)
+					)
+				)
+			);
 
-			$ecommerce = new EnhancedEcommerce();
-
-			$javascript .= $ecommerce->purchase(self::$purchase);
+		// wrap any ecommerce data layer values in the ecommerce JSON array
+		if($EnhancedEcommerce->show === true) :
+			$ecommerce  = "'ecommerce' : {".$ecommerce."}";
 		endif;
+
+		// combine all the data layer values into a single data layer
+		$javascript .= implode(',',
+			array_filter(
+				array(
+					self::buildData(),
+					$ecommerce
+					)
+				)
+			);
 		
 		$javascript .= '}];</script>';
 
 		return $javascript;
 	}
-	/**
-	 * Adds a , between a JSON array / set of data layer values
-	 *
-	 * @param array
-	 *
-	 * @return string
-	 */
-
-	private static function spacer($data)
-	{
-		return !empty($data) ? ',' : '';
-	}
 
 	/**
 	 * Set the ecommerce purchase fields
+	 *
+	 * @param array $params The purchase fields to set
 	 *
 	 * @return void
 	 */
@@ -137,7 +142,9 @@ class GTM {
 	}
 
 	/**
-	 * Set fields for a product / service / item within a purchase / order
+	 * Set fields for an item within a purchase
+	 *
+	 * @param array $params The purchased item fields to set
 	 *
 	 * @return void
 	 */
@@ -158,25 +165,37 @@ class GTM {
 	}
 
 	/**
-	 * Creates a JSON  array formatted string containing our created data layer key value pairs
+	 * Add an id to the product refund array
+	 *
+	 * @param mixed int|array $item An id or array of item ids to refund
+	 *
+	 * @return void
+	 */
+	public static function refund($item)
+	{
+		if(is_array($item)) :
+			foreach($item as $id) :
+				self::$refunds[] = $id;
+			endforeach;
+		else :
+			self::$refunds[] = $item;
+		endif;
+	}
+
+	/**
+	 * Creates a JSON array formatted string containing our created data layer 
+	 * key value pairs.
 	 *
 	 * @return string
 	 */
 	private static function buildData()
 	{
-		if(!empty(self::$data)) :
+		$data = array();
 
-			$total = count(self::$data);
-			$javascript = '';
-			$i = 1;
+		foreach(self::$data as $key => $value) :
+			$data[] .= "'".$key."' : '".$value."'";
+		endforeach;
 
-			foreach(self::$data as $key => $value) :
-				$javascript .= "'".$key."' : '".$value."'";
-				$javascript .= $i < $total ? ',' : '';
-				$i++;
-			endforeach;
-
-			return $javascript;
-		endif;
+		return implode(',',$data);
 	}
 }

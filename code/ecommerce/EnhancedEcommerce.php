@@ -10,55 +10,91 @@
 class EnhancedEcommerce {
 
 	/**
-	 * Create an ecommerce transaction consisteing of the trnsaction fields and order items
+	 * @var boolean $false Set whether the ecommerce data layer should show
+	 */
+	public $show = false;
+
+	/**
+	 * Create an ecommerce transaction consisting of the transaction fields and order items
 	 *
-	 * @param array $order A multidimensional array containing our purchased items
+	 * @param array $order A multidimensional array containing our purchase fields and items
 	 * 
 	 * @return string
 	 */
 	public function purchase($order)
 	{
-		if(!empty($purchases)) :
-			$purchase  = "'ecommerce' : {";
-			$purchase .= "'purchase' : {";
+		if(!empty($order)) :
+			$data = "'purchase' : {";
 
 			$i = 1;
 			// Set the transaction order fields
-			$purchase .= "'actionField' : {";
+			$data .= "'actionField' : {";
 			foreach($order['fields'] as $key => $value) :
 				$total = count($order['fields']);
 
-				$purchase .= "'".$key."' : '".$value."'";
-				$purchase .= $i < $total ? ',' : '';
+				$data .= "'".$key."' : '".$value."'";
+				$data .= $i < $total ? ',' : '';
 
 				$i++;
 			endforeach;
-			$purchase .= '},';
+			$data .= '},';
 
-			$purchase .= "'products' : [";
+			$data .= "'products' : [";
 			$i = 1;
 			// lopp through our products
 			foreach($order['items'] as $item) :
-				$purchase .= "{";
+				$data .= "{";
 
 				$e = 1;
 				// loop through the indivdual product attributes
 				foreach($item as $key => $value) :
-					$purchase .= "'".$key."' : '".$value."'";
-					$purchase .= $e < count($item) ? ',' : '';
+					$data .= "'".$key."' : '".$value."'";
+					$data .= $e < count($item) ? ',' : '';
 					$e++;
 				endforeach;
-				$purchase .= "}";
-				$purchase .= $i < count($order['items']) ? ',' : '';
+				$data .= "}";
+				$data .= $i < count($order['items']) ? ',' : '';
 
 				$i++;
 			endforeach;
-			$purchase .= ']';
+			$data .= ']';
 
-			$purchase .= "}";
-			$purchase .= "}";
+			$data .= "}";
 
-			return $purchase;
+			$this->show = true;
+
+			return $data;
+		endif;
+	}
+
+	/**
+	 * Create an ecommerce refund consisting of the items to refund
+	 *
+	 * @param array $ids An array of item ids to refund
+	 * 
+	 * @return string
+	 */
+	public function refund($ids)
+	{
+		if(!empty($ids)) :
+			$refunds = array();
+
+			$data = "
+			'refund' : {
+				'actionField' : [";
+
+			foreach($ids as $id) :
+				$refunds[] = "{'id' : '".$id."'}";
+			endforeach;
+
+			$data .= implode(',',$refunds);
+			$data .= "
+				]
+			}";
+
+			$this->show = true;
+
+			return $data;
 		endif;
 	}
 
@@ -103,6 +139,11 @@ class EnhancedEcommerce {
 	}
 
 	public function checkoutOption()
+	{
+		
+	}
+
+	public function partialRefund()
 	{
 		
 	}

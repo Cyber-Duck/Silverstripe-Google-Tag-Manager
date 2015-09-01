@@ -67,9 +67,9 @@ The key value pairs will generate the necessary data layer JavaScript code
 <script>dataLayer = [{'key' : 'value'}];</script>
 ```
 
-### Pushing an ecomerce transaction to the data layer
+### Pushing an ecommerce transaction to the data layer
 
-Create 2 arrays; one containing the transaction fields and another containing your products. Call the purchase method first and inject your order fields then loop through your products and add each using the purchaseItem method.
+Create 2 arrays; one containing the transaction fields and another containing your products. Call the purchase method first and inject your order fields. Loop through your products and inject each individual product array into the purchaseItem method. The array keys should correspond to the Google ecommerce fields brand, price, category etc.
 
 ```php  
 $order = array(
@@ -98,17 +98,18 @@ $products = array(
 GTM::purchase($order);
 
 foreach($products as $product) {
-
-    $item = array(
-        'id'       => $product['id'],
-        'name'     => $product['name'],
-        'category' => $product['category'],
-        'price'    => $product['price'],
-        'brand'    => $product['brand']
-    );
-
-    GTM::purchaseItem($item);
+    GTM::purchaseItem($product);
 }
+```
+
+### Pushing a refund to the data layer
+
+You can call the refund method to generate the refund data layer values. A single id or array of ids can be passed in.
+
+```php  
+GTM::refund(1);
+
+GTM::refund(array(1,2,3));
 ```
 
 ## About
