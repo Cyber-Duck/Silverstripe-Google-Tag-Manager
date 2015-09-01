@@ -61,4 +61,54 @@ class EnhancedEcommerce {
 			return $purchase;
 		endif;
 	}
+
+	private static function productImpression()
+	{
+
+	}
+
+	private static function productClick()
+	{
+		
+	}
+
+	private static function productDetail()
+	{
+		
+	}
+
+	private static function cartAdd()
+	{
+		
+	}
+
+	private static function cartRemove()
+	{
+		
+	}
+
+	private static function promotionImpression()
+	{
+		
+	}
+
+	private static function promotionClick()
+	{
+		
+	}
+
+	private static function checkoutStep($number = 1)
+	{
+		
+	}
+
+	private static function checkoutOption()
+	{
+		
+	}
+
+	private static function checkoutOption()
+	{
+		
+	}
 }
