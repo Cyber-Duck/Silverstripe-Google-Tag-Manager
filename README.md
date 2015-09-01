@@ -4,7 +4,7 @@ Google Tag Manager Version 2 integration for Silverstripe
 Author: Andrew Mc Cormack
 
 - Populate the Tag Manger data layer easily
-- Generate ecommerce transaction data layer values
+- Generate ecommerce transaction data layer values including purchases and refunds
 - Makes setting up user ID tracking much easier
 
 ## Installation
