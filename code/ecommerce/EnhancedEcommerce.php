@@ -12,21 +12,21 @@ class EnhancedEcommerce {
 	/**
 	 * Create an ecommerce transaction consisteing of the trnsaction fields and order items
 	 *
-	 * @param array $ecommerce A multidimensional array containing our purchased items
+	 * @param array $order A multidimensional array containing our purchased items
 	 * 
 	 * @return string
 	 */
-	private static function purchase($ecommerce)
+	private static function purchase($order)
 	{
-		if(!empty($ecommerce)) :
+		if(!empty($purchases)) :
 			$purchase  = "'ecommerce' : {";
 			$purchase .= "'purchase' : {";
 
 			$i = 1;
 			// Set the transaction order fields
 			$purchase .= "'actionField' : {";
-			foreach($ecommerce['fields'] as $key => $value) :
-				$total = count($ecommerce['fields']);
+			foreach($order['fields'] as $key => $value) :
+				$total = count($order['fields']);
 
 				$purchase .= "'".$key."' : '".$value."'";
 				$purchase .= $i < $total ? ',' : '';
@@ -38,7 +38,7 @@ class EnhancedEcommerce {
 			$purchase .= "'products' : [";
 			$i = 1;
 			// lopp through our products
-			foreach($ecommerce['items'] as $item) :
+			foreach($order['items'] as $item) :
 				$purchase .= "{";
 
 				$e = 1;
@@ -49,7 +49,7 @@ class EnhancedEcommerce {
 					$e++;
 				endforeach;
 				$purchase .= "}";
-				$purchase .= $i < count($ecommerce['items']) ? ',' : '';
+				$purchase .= $i < count($order['items']) ? ',' : '';
 
 				$i++;
 			endforeach;

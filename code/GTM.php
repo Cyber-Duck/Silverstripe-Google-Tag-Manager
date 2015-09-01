@@ -1,27 +1,36 @@
 <?php
 /**
  * Google Tag Manager
- * A module to allow the easy implementation of Google Tag Manager within a framework
+ * A module to allow the easy implementation of Google Tag Manager within the 
+ * Silverstripe framework. The GTM module is meant to cater for any features of 
+ * Google Tag Manager that must be "hard coded" with a page. Data layer variables 
+ * and ecommerce features such as purchases can be easily be inserted within a page 
+ * through your controller functionality without having to edit your ss templates.
+ * Instead of building the datalayer JavScript straight away, all data layer values 
+ * are stored in static arrays which are converted into JavScript once we call our
+ * Tag Manager snippet. 
  *
- * @package silverstripe-blacklist
+ * @package silverstripe-google-tag-manager
  * @license MIT License https://github.com/Cyber-Duck/Silverstripe-Google-Tag-Manager/blob/master/LICENSE
  * @author  <andrewm@cyber-duck.co.uk>
  **/
 class GTM {
 
 	/**
-	 * @var array $data Our datalayer key value pairs
+	 * @var array $data Contains any manually set data layer key value pairs
 	 */
 	private static $data = array();
 
 	/**
-	 * @var array $ecommerce Our ecommerce transaction items
+	 * @var array $purchase Contains a purchase fields and products
 	 */
-	private static $ecommerce = array();
+	private static $purchase = array();
 
 	/**
-	 * Returns our data layer and Google Tag Manager snippet. Inject in your container
-	 * ID in the format XXXXX.
+	 * Returns the complete data layer and Google Tag Manager snippet. Inject in 
+	 * the container ID (GTM-XXXXX). Only the XXXXX part is required for injection.
+	 * Creating the data layer and snippet this way stops any issues with data layer
+	 * values being populated after the snippet is called.
 	 *
 	 * @param string $id Your container ID
 	 *
@@ -42,10 +51,11 @@ class GTM {
 	}
 
 	/**
-	 * Assign a data layer key value pair
+	 * Assign a data layer key value pair. This is be the same as pushing to 
+	 * the data layer.
 	 *
-	 * @param string $key   The array key
-	 * @param string $value The array value
+	 * @param string $key   The data layer key / name
+	 * @param string $value The data layer value
 	 *
 	 * @return void
 	 */
@@ -55,13 +65,17 @@ class GTM {
 	}
 
 	/**
-	 * Create the data layer code
+	 * Create the data layer code. All things like manually set data layer values
+	 * and purchases are processed and built as one data layer. Creating this way 
+	 * stops the need of having to set a JavaScript data layer variable initially 
+	 * within the page code and stops issues with undefined data layer when pushing.
 	 *
 	 * @return string
 	 */
 	public static function dataLayer()
 	{
-		if(empty(self::$data) && empty(self::$ecommerce)) :
+		// if no data layer variables are set the data layer is not built
+		if(empty(self::$data) && empty(self::$purchase)) :
 			return false;
 		endif;
 
@@ -69,15 +83,17 @@ class GTM {
 
 		// add any data layer values populated from the data method
 		$javascript .= self::buildData();
-		if(!empty(self::$data) && !empty(self::$ecommerce)) :
-			$javascript.= ',';
-		endif;
+		
 
 		// add enhanced ecommerce data layer values if they are set
-		if(!empty(self::$ecommerce)) :
+		if(!empty(self::$purchase)) :
+			if(!empty(self::$data)) :
+				$javascript.= ',';
+			endif;
+
 			$ecommerce = new EnhancedEcommerce();
 
-			$javascript .= $ecommerce->purchase(self::$ecommerce);
+			$javascript .= $ecommerce->purchase(self::$purchase);
 		endif;
 		
 		$javascript .= '}];</script>';
@@ -86,11 +102,11 @@ class GTM {
 	}
 
 	/**
-	 * Set the ecommerce transaction fields
+	 * Set the ecommerce purchase fields
 	 *
 	 * @return void
 	 */
-	public static function order($params)
+	public static function purchase($params)
 	{
 		// required fields to check
 		$defaults = array(
@@ -107,15 +123,15 @@ class GTM {
 			endif;
 		endforeach;
 
-		self::$ecommerce['fields'] = $params;
+		self::$purchase['fields'] = $params;
 	}
 
 	/**
-	 * Set fields for a product within a purchase
+	 * Set fields for a product / service / item within a purchase / order
 	 *
 	 * @return void
 	 */
-	public static function orderItem($params)
+	public static function purchaseItem($params)
 	{
 		$defaults = array(
 			'name'     => '',
@@ -128,13 +144,13 @@ class GTM {
 			endif;
 		endforeach;
 
-		self::$ecommerce['items'][] = $params;
+		self::$purchase['items'][] = $params;
 	}
 
 	/**
-	 * Creates a json array formatted string containing our data layer key value pairs
+	 * Creates a JSON  array formatted string containing our created data layer key value pairs
 	 *
-	 * @return void
+	 * @return string
 	 */
 	private static function buildData()
 	{
