@@ -106,9 +106,4 @@ class EnhancedEcommerce {
 	{
 		
 	}
-
-	public function checkoutOption()
-	{
-		
-	}
 }
