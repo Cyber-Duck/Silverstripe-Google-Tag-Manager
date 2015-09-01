@@ -16,7 +16,7 @@ class EnhancedEcommerce {
 	 * 
 	 * @return string
 	 */
-	private static function purchase($order)
+	public function purchase($order)
 	{
 		if(!empty($purchases)) :
 			$purchase  = "'ecommerce' : {";
@@ -60,5 +60,55 @@ class EnhancedEcommerce {
 
 			return $purchase;
 		endif;
+	}
+
+	public function productImpression()
+	{
+
+	}
+
+	public function productClick()
+	{
+		
+	}
+
+	public function productDetail()
+	{
+		
+	}
+
+	public function cartAdd()
+	{
+		
+	}
+
+	public function cartRemove()
+	{
+		
+	}
+
+	public function promotionImpression()
+	{
+		
+	}
+
+	public function promotionClick()
+	{
+		
+	}
+
+	public function checkoutStep($number = 1)
+	{
+		
+	}
+
+	public function checkoutOption()
+	{
+		
+	}
+
+	public function checkoutOption()
+	{
+		
 	}
 }
