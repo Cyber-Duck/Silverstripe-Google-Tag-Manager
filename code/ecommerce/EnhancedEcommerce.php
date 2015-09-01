@@ -68,26 +68,26 @@ class EnhancedEcommerce {
 	}
 
 	/**
-	 * Create an ecommerce refund consisting of the items to refund
+	 * Create an ecommerce refund consisting of the transactions to refund
 	 *
-	 * @param array $ids An array of item ids to refund
+	 * @param array $ids An array of transaction ids to refund
 	 * 
 	 * @return string
 	 */
 	public function refund($ids)
 	{
 		if(!empty($ids)) :
-			$refunds = array();
+			$transactions = array();
 
 			$data = "
 			'refund' : {
 				'actionField' : [";
 
 			foreach($ids as $id) :
-				$refunds[] = "{'id' : '".$id."'}";
+				$transactions[] = "{'id' : '".$id."'}";
 			endforeach;
 
-			$data .= implode(',',$refunds);
+			$data .= implode(',',$transactions);
 			$data .= "
 				]
 			}";

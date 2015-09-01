@@ -104,7 +104,7 @@ foreach($products as $product) {
 
 ### Pushing a refund to the data layer
 
-You can call the refund method to generate the refund data layer values. A single id or array of ids can be passed in.
+You can call the refund method to generate the refund data layer values. A single transaction id or array of ids can be passed in.
 
 ```php  
 GTM::refund(1);
