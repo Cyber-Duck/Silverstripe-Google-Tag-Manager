@@ -1,135 +1,73 @@
 # Silverstripe - Google Tag Manager
-Google Tag Manager Version 2 integration for Silverstripe
 
-Author: Andrew Mc Cormack
 
-- Populate the Tag Manger data layer easily
-- Generate ecommerce transaction data layer values including purchases and refunds
-- Makes setting up user ID tracking much easier
+A Silverstripe module to add Google Tag Manager Version 2 datalayer, event, and ecommerce integration. Using simple functions push any values you want to the datalayer for full Tag Manager integration within Silverstripe. The module genreates a formatted json dataLayer which can be accessed easily through the Google Tag Manager UI. 
 
-## Installation
-Add the following to your composer.json file
+Author: [Andrew Mc Cormack](https://github.com/Andrew-Mc-Cormack)
 
-    {  
-        "require": {  
-            "cyber-duck/silverstripe-google-tag-manager": "1.0.*"  
-        }
-    }
+Key Features
+  - Push datalayer key value pairs easily
+  - Push events to trigger Tag Manager tags
 
-Run composer install and composer update to download the module  
+Ecommerce Features
+  - Set ecommerce currency code
+  - Set product impressions
+  - Set product promotions
+  - Set product detail views
+  - Set add to cart actions
+  - Set remove from cart actions
+  - Set purchase data / purchase item data
+  - Set refund transactions / transaction item(s)
+  - Supports multiple exommerce actions on each page
 
-Add the following function to the Page_Controller in your Page.php file located in your code folder. Replace XXXXX with the ID of your container which you can get from the Tag Manager interface. It takes the format GTM-XXXXX, however you don't need to include the GTM part.
 
-```php  
-public function TagManager()
-{
-	return GTM::snippet('XXXXX');
-}
-```
+## Guides
+  
+  - [Installation](/docs/installation)
+    - [Composer](/docs/installation#composer)
+    - [Controller and View](/docs/installation#controller-and-view)
+    - [Validating your Search Console property](/docs/installation#validating-your-search-console-property)
+  - [Pushing Data](/docs/data)
+    - [Pushing to the data layer](/docs/data#pushing-to-the-data-layer)
+    - [Pushing an event to the data layer](/docs/data#pushing-an-event-to-the-data-layer)
+  - [Pushing Ecommerce Data](/docs/ecommerce)
 
-In your Page.ss template add $TagManager just after the opening body tag
-
-```php  
-<body>
-$TagManager
-```
-
-If you wish to load it depending on environment you can do something like below. Generally you will only want tag manager to load in a production environment unless you are debugging in a local development environment.
-
-```php  
-<% if IsLive %>
-$TagManager
-<% end_if %>
-```
-
-Append the following to your app URL  
-**/dev/build?flush=all**  
-This rebuilds your database and clears your cache.
-
-## Usage
-
-### Pushing to the data layer
-
-To push a key value pair to the dataLayer you can simply call the data method within your controller files. You can call the method as many times as you want to push values to the data layer.
-
-```php  
-GTM::data('key','value')
-```
-The key value pairs will generate the necessary data layer JavaScript code
-
-```javascript  
-<script>dataLayer = [{'key' : 'value'}];</script>
-```
-
-### Pushing an ecommerce transaction to the data layer
-
-Create 2 arrays; one containing the transaction fields and another containing your products. Call the purchase method first and inject your order fields. Loop through your products and inject each individual product array into the purchaseItem method. The array keys should correspond to the Google ecommerce fields brand, price, category etc.
-
-```php  
-$order = array(
-    'id'          => '1',
-    'affiliation' => 'My Store Name',
-    'revenue'     => '1000.00'
-);
-
-$products = array(
-    array(
-        'id'       => 1,
-        'name'     => 'product 1',
-        'category' => 'category 1',
-        'price'    => '100.00',
-        'brand'    => 'brand 1'
-    ),
-    array(
-        'id'       => 2,
-        'name'     => 'product 2',
-        'category' => 'category 2',
-        'price'    => '100.00',
-        'brand'    => 'brand 2'
-    )
-);
-
-GTM::purchase($order);
-
-foreach($products as $product) {
-    GTM::purchaseItem($product);
-}
-```
-
-### Pushing a refund to the data layer
-
-You can call the refund method to generate the refund data layer values. A single transaction id or array of ids can be passed in.
-
-```php  
-GTM::refund(1);
-
-GTM::refund(array(1,2,3));
-```
-
-## About
-
-Author: Andrew Mc Cormack
 
 ## License
 
-The MIT License (MIT)
+```
+Copyright (c) 2016, Andrew Mc Cormack <andrewm@cyber-duck.co.uk>.
+All rights reserved.
 
-Copyright (c) 2015 Andrew Mc Cormack
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in
+      the documentation and/or other materials provided with the
+      distribution.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+```
+
+### Todo
+
+  - Update readme
+  - Create version
+  - Add list support
+  - Record current event and reset data layer
