@@ -28,7 +28,7 @@ class Page_Controller extends ContentController {
 }
 ```
 
-Within your Page.ss template or similar add the $TagManager variable to call your controller method.
+Within your Page.ss template or similar add the $TagManager variable after your opening body tag to call your controller method.
 
 ```php
 <body>

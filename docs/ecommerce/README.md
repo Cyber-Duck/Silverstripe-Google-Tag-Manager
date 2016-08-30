@@ -11,7 +11,6 @@ GTM::transactionCurrency('EUR');
 outputs:
 
 ```javascript
-window.dataLayer = window.dataLayer || [];
 dataLayer.push({
     "ecommerce": {
         "currencyCode": "EUR"
@@ -24,7 +23,6 @@ dataLayer.push({
 To push a product impression pass an array of product fields.
 
 ```php
-
 $impression = array(
     'name'     => 'Triblend Android T-Shirt',
     'id'       => '12345',
@@ -41,7 +39,6 @@ GTM::productImpression($product)
 outputs:
 
 ```javascript
-window.dataLayer = window.dataLayer || [];
 dataLayer.push({
     "ecommerce": {
         "currencyCode": "EUR",
@@ -76,7 +73,6 @@ GTM::productPromoImpression($product)
 outputs:
 
 ```javascript
-window.dataLayer = window.dataLayer || [];
 dataLayer.push({
     "ecommerce": {
         "promoView": {
@@ -110,7 +106,6 @@ GTM::productDetail($product);
 outputs:
 
 ```javascript
-window.dataLayer = window.dataLayer || [];
 dataLayer.push({
     "ecommerce": {
         "detail": {
@@ -147,7 +142,6 @@ GTM::addToCart($product);
 outputs:
 
 ```javascript
-window.dataLayer = window.dataLayer || [];
 dataLayer.push({
     "ecommerce": {
         "add": {
@@ -168,7 +162,7 @@ dataLayer.push({
 });
 ```
 
-## Pushing an remove from cart action
+## Pushing a remove from cart action
 
 ```php
 $product = array(
@@ -186,7 +180,6 @@ GTM::removeFromCart($product);
 outputs:
 
 ```javascript
-window.dataLayer = window.dataLayer || [];
 dataLayer.push({
     "ecommerce": {
         "remove": {
@@ -235,7 +228,6 @@ GTM::purchaseItem($product);
 outputs:
 
 ```javascript
-window.dataLayer = window.dataLayer || [];
 dataLayer.push({
     "ecommerce": {
         "purchase": {
@@ -264,7 +256,9 @@ dataLayer.push({
 });
 ```
 
-## Refundign a transaction or items
+## Refunding a transaction or items
+
+### Refunding a transaction
 
 ```php
 GTM::refundTransaction(10001)
@@ -284,6 +278,8 @@ dataLayer.push({
     }
 });
 ```
+
+### Refunding a transaction item
 
 ```php
 GTM::refundItem(1001, 999, 1)

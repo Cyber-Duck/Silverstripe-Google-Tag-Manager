@@ -31,6 +31,14 @@ Ecommerce Features
     - [Pushing to the data layer](/docs/data#pushing-to-the-data-layer)
     - [Pushing an event to the data layer](/docs/data#pushing-an-event-to-the-data-layer)
   - [Pushing Ecommerce Data](/docs/ecommerce)
+    - [Setting the ecommerce currency](/docs/ecommerce#setting-the-ecommerce-currency)
+    - [Pushing a product impression](/docs/ecommerce#pushing-a-product-impression)
+    - [Pushing a product promotion impression](/docs/ecommerce#pushing-a-product-promotion-impression)
+    - [Pushing a product detail view](/docs/ecommerce#pushing-a-product-detail-view)
+    - [Pushing an add to cart action](/docs/ecommerce#pushing-an-add-to-cart-action)
+    - [Pushing a remove from cart action](/docs/ecommerce#pushing-a-remove-from-cart-action)
+    - [Pushing a purchase transaction and items](/docs/ecommerce#pushing-a-purchase-transaction-and-items)
+    - [Refunding a transaction or items](/docs/ecommerce#refunding-a-transaction-or-items)
 
 
 ## License

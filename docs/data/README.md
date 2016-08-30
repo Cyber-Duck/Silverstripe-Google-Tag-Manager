@@ -11,6 +11,7 @@ GTM::data('key','value')
 outputs:
 
 ```javascript  
+window.dataLayer = window.dataLayer || [];
 dataLayer = [{
 	'key' : 'value'
 }];
