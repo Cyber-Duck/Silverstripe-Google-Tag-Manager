@@ -12,8 +12,14 @@ Add the following to your composer.json file
 
     {  
         "require": {  
-            "cyber-duck/silverstripe-google-tag-manager": "1.0.*"  
-        }
+            "Cyber-Duck/Silverstripe-Google-Tag-Manager": "master"  
+        },  
+        "repositories": [  
+            {  
+                "type": "vcs",  
+                "url": "https://github.com/Cyber-Duck/Silverstripe-Google-Tag-Manager"  
+            }  
+        ]  
     }
 
 Run composer install and composer update to download the module  
