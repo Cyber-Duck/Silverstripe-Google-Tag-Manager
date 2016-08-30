@@ -75,7 +75,5 @@ POSSIBILITY OF SUCH DAMAGE.
 
 ### Todo
 
-  - Update readme
-  - Create version
   - Add list support
   - Record current event and reset data layer
