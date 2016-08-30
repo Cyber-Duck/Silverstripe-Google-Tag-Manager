@@ -1,5 +1,8 @@
 # Silverstripe - Google Tag Manager
 
+[![Latest Stable Version](https://poser.pugx.org/cyber-duck/silverstripe-seo/v/stable)](https://packagist.org/packages/cyber-duck/silverstripe-google-tag-manager)
+[![Total Downloads](https://poser.pugx.org/cyber-duck/silverstripe-seo/downloads)](https://packagist.org/packages/cyber-duck/silverstripe-google-tag-manager)
+[![License](https://poser.pugx.org/cyber-duck/silverstripe-seo/license)](https://packagist.org/packages/cyber-duck/silverstripe-google-tag-manager)
 
 A Silverstripe module to add Google Tag Manager Version 2 datalayer, event, and ecommerce integration. Using simple functions push any values you want to the datalayer for full Tag Manager integration within Silverstripe. The module genreates a formatted json dataLayer which can be accessed easily through the Google Tag Manager UI. 
 
