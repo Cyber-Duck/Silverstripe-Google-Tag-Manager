@@ -4,7 +4,7 @@ Google Tag Manager Version 2 integration for Silverstripe
 Author: Andrew Mc Cormack
 
 - Populate the Tag Manger data layer easily
-- Generate ecommerce transaction data layer values
+- Generate ecommerce transaction data layer values including purchases and refunds
 - Makes setting up user ID tracking much easier
 
 ## Installation
@@ -54,6 +54,8 @@ This rebuilds your database and clears your cache.
 
 ## Usage
 
+### Pushing to the data layer
+
 To push a key value pair to the dataLayer you can simply call the data method within your controller files. You can call the method as many times as you want to push values to the data layer.
 
 ```php  
@@ -65,6 +67,50 @@ The key value pairs will generate the necessary data layer JavaScript code
 <script>dataLayer = [{'key' : 'value'}];</script>
 ```
 
+### Pushing an ecommerce transaction to the data layer
+
+Create 2 arrays; one containing the transaction fields and another containing your products. Call the purchase method first and inject your order fields. Loop through your products and inject each individual product array into the purchaseItem method. The array keys should correspond to the Google ecommerce fields brand, price, category etc.
+
+```php  
+$order = array(
+    'id'          => '1',
+    'affiliation' => 'My Store Name',
+    'revenue'     => '1000.00'
+);
+
+$products = array(
+    array(
+        'id'       => 1,
+        'name'     => 'product 1',
+        'category' => 'category 1',
+        'price'    => '100.00',
+        'brand'    => 'brand 1'
+    ),
+    array(
+        'id'       => 2,
+        'name'     => 'product 2',
+        'category' => 'category 2',
+        'price'    => '100.00',
+        'brand'    => 'brand 2'
+    )
+);
+
+GTM::purchase($order);
+
+foreach($products as $product) {
+    GTM::purchaseItem($product);
+}
+```
+
+### Pushing a refund to the data layer
+
+You can call the refund method to generate the refund data layer values. A single transaction id or array of ids can be passed in.
+
+```php  
+GTM::refund(1);
+
+GTM::refund(array(1,2,3));
+```
 
 ## About
 
