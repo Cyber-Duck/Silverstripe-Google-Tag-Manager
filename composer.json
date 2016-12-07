@@ -1,6 +1,6 @@
 {
     "name": "cyber-duck/silverstripe-google-tag-manager",
-    "description": "Add Tag Manager data layer, events, and ecommerce support for Silverstripe",
+    "description": "Add Tag Manager data layer, events, and ecommerce support for SilverStripe",
     "type": "silverstripe-module",
     "homepage": "http://github.com/cyber-duck/silverstripe-google-tag-manager",
     "keywords": [
@@ -21,5 +21,6 @@
     },
     "extra": {
         "installer-name": "gtm"
-    }
+    },
+    "prefer-stable": true
 }
