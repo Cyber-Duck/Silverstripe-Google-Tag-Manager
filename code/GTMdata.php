@@ -1,6 +1,7 @@
 <?php
 /**
  * Google Tag Manager Data class
+ *
  * This class creates a persistent container for all dataLayer values and is 
  * used by the GTM class to store and retrieve data.
  *
@@ -8,17 +9,21 @@
  * @license MIT License https://github.com/cyber-duck/silverstripe-google-tag-manager/blob/master/LICENSE
  * @author  <andrewm@cyber-duck.co.uk>
  **/
-class GTMdata {
-
+class GTMdata
+{
     /**
      * The Tag Manager dataLayer array of values
      *
+     * @since 1.0.0
+     *
      * @var array
      */
-    private static $data = array();
+    private static $data = [];
 
     /**
      * The datalayer JSON string
+     *
+     * @since 1.0.0
      *
      * @var string
      */
@@ -27,6 +32,8 @@ class GTMdata {
     /**
      * The current dataLayer currency e.g EUR
      *
+     * @since 1.0.0
+     *
      * @var string
      */
     private static $currency;
@@ -34,8 +41,11 @@ class GTMdata {
     /**
      * Push a key value pair to the data array
      *
+     * @since 1.0.0
+     *
      * @param string $name  DataLayer var name
      * @param mixed  $value DataLayer var value
+     *
      * @return void
      */
     public static function pushData($name, $value)
@@ -46,7 +56,10 @@ class GTMdata {
     /**
      * Push an event to the data array
      *
+     * @since 1.0.0
+     *
      * @param string $name  The event name
+     *
      * @return void
      */
     public static function pushEvent($name)
@@ -57,7 +70,10 @@ class GTMdata {
     /**
      * Push a transaction currency the data array
      *
+     * @since 1.0.0
+     *
      * @param string $code ISO 4217 format currency code e.g. EUR
+     *
      * @return void
      */
     public static function pushTransactionCurrency($code)
@@ -70,7 +86,10 @@ class GTMdata {
     /**
      * Push a product impression to the data array
      *
+     * @since 1.0.0
+     *
      * @param array $fields An array of item fields
+     *
      * @return void
      */
     public static function pushProductImpression($fields)
@@ -85,7 +104,10 @@ class GTMdata {
     /**
      * Push a product promotional impression to the data array
      *
+     * @since 1.0.0
+     *
      * @param array $fields An array of item fields
+     *
      * @return void
      */
     public static function pushProductPromoImpression($fields)
@@ -100,7 +122,10 @@ class GTMdata {
     /**
      * Push a product detail view fields to the data array
      *
+     * @since 1.0.0
+     *
      * @param array $fields An array of a purchase item fields
+     *
      * @return void
      */
     public static function pushProductDetail($fields)
@@ -115,7 +140,10 @@ class GTMdata {
     /**
      * Push a cart add action to the data array
      *
+     * @since 1.0.0
+     *
      * @param array $fields An array of item fields
+     *
      * @return void
      */
     public static function pushAddToCart($fields)
@@ -126,7 +154,10 @@ class GTMdata {
     /**
      * Push a cart remove action to the data array
      *
+     * @since 1.0.0
+     *
      * @param array $fields An array of item fields
+     *
      * @return void
      */
     public static function pushRemoveFromCart($fields)
@@ -137,7 +168,10 @@ class GTMdata {
     /**
      * Push a purchase to the data array
      *
+     * @since 1.0.0
+     *
      * @param array $fields An array of purchase fields
+     *
      * @return void
      */
     public static function pushPurchase($fields)
@@ -156,7 +190,10 @@ class GTMdata {
     /**
      * Push a purchase item fields to the data array
      *
+     * @since 1.0.0
+     *
      * @param array $fields An array of a purchase item fields
+     *
      * @return void
      */
     public static function pushPurchaseItem($fields)
@@ -171,7 +208,10 @@ class GTMdata {
     /**
      * Push a refund to the data array
      *
+     * @since 1.0.0
+     *
      * @param string $id The id of the transaction to refund
+     *
      * @return void
      */
     public static function pushRefundTransaction($id)
@@ -182,9 +222,12 @@ class GTMdata {
     /**
      * Push a refund item to the data array
      *
+     * @since 1.0.0
+     *
      * @param string $id        The id of the transaction
      * @param string $productId The id of the item
      * @param int    $quantity  The quantity to refund
+     *
      * @return void
      */
     public static function pushRefundTransactionItem($id, $productId, $quantity)
@@ -197,9 +240,12 @@ class GTMdata {
     /**
      * Push a cart action to the data array
      *
+     * @since 1.0.0
+     *
      * @param array $action The cart action
      * @param array $event  The event name of the action
      * @param array $fields An array of item fields
+     *
      * @return void
      */
     public static function pushCartAction($action, $event, $fields)
@@ -221,6 +267,8 @@ class GTMdata {
     /**
      * Get the complete formatted dataLayer
      *
+     * @since 1.0.0
+     *
      * @return string | null
      */
     public static function getDataLayer()
@@ -233,8 +281,11 @@ class GTMdata {
     /**
      * Compare an array against an array of required fields for a dataLayer property
      *
+     * @since 1.0.0
+     *
      * @param array $fields   Fields to check
      * @param array $defaults Default fields for this array
+     *
      * @return array
      */
     private static function getDefaults($fields, $defaults)
@@ -249,6 +300,8 @@ class GTMdata {
 
     /**
      * Create a dataLayer push from the current data array
+     *
+     * @since 1.0.0
      *
      * @return void
      */

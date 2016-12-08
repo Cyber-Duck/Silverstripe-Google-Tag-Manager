@@ -1,6 +1,7 @@
 <?php
 /**
  * Google Tag Manager
+ *
  * A module to allow the easy implementation of Google Tag Manager within the 
  * Silverstripe framework. The GTM module is meant to cater for any features of 
  * Google Tag Manager that must be "hard coded" with a page. Data layer variables 
@@ -14,13 +15,15 @@
  * @license MIT License https://github.com/Cyber-Duck/Silverstripe-Google-Tag-Manager/blob/master/LICENSE
  * @author  <andrewm@cyber-duck.co.uk>
  **/
-class GTM {
-
+class GTM
+{
 	/**
 	 * Returns the complete data layer and Google Tag Manager snippet. Inject in 
 	 * the container ID (GTM-XXXXX). Only the XXXXX part is required for injection.
 	 * Creating the data layer and snippet this way stops any issues with data layer
 	 * values being populated after the snippet is called.
+     *
+     * @since 1.0.0
 	 *
 	 * @param string $id Your container ID
 	 *
@@ -37,8 +40,11 @@ class GTM {
     /**
      * Set a dataLayer key value pair
      *
+     * @since 1.0.0
+     *
      * @param string $name  DataLayer var name
      * @param mixed  $value DataLayer var value
+     *
      * @return void
      */
     public static function data($name, $value)
@@ -49,7 +55,10 @@ class GTM {
     /**
      * Push an event to the dataLayer
      *
+     * @since 1.0.0
+     *
      * @param string $name  The event name
+     *
      * @return void
      */
     public static function event($name)
@@ -60,7 +69,10 @@ class GTM {
     /**
      * Add the ecommerce transaction currency code
      *
+     * @since 1.0.0
+     *
      * @param string $code ISO 4217 format currency code e.g. EUR
+     *
      * @return void
      */
     public static function transactionCurrency($code)
@@ -71,7 +83,10 @@ class GTM {
     /**
      * Record a product impression
      *
+     * @since 1.0.0
+     *
      * @param mixed $product An array of item fields
+     *
      * @return void
      */
     public static function productImpression($product)
@@ -82,7 +97,10 @@ class GTM {
     /**
      * Record a product impression in a promotional space
      *
+     * @since 1.0.0
+     *
      * @param mixed $product An array of item fields
+     *
      * @return void
      */
     public static function productPromoImpression($product)
@@ -93,7 +111,10 @@ class GTM {
     /**
      * Record a product detail page
      *
+     * @since 1.0.0
+     *
      * @param mixed $product An array of item fields
+     *
      * @return void
      */
     public static function productDetail($product)
@@ -104,7 +125,10 @@ class GTM {
     /**
      * Record a product being added to the cart
      *
+     * @since 1.0.0
+     *
      * @param mixed $product An array of item fields
+     *
      * @return void
      */
     public static function addToCart($product)
@@ -115,7 +139,10 @@ class GTM {
     /**
      * Record a product being removed from the cart
      *
+     * @since 1.0.0
+     *
      * @param mixed $product An array of item fields
+     *
      * @return void
      */
     public static function removeFromCart($product)
@@ -126,7 +153,10 @@ class GTM {
     /**
      * Add an ecommerce transaction
      *
+     * @since 1.0.0
+     *
      * @param array $fields An array of purchase fields
+     *
      * @return void
      */
     public static function purchase($fields)
@@ -138,7 +168,10 @@ class GTM {
      * Add an ecommerce transaction item
      * Used in conjunction with ->purchase()
      *
+     * @since 1.0.0
+     *
      * @param mixed $product An array of item fields
+     *
      * @return void
      */
     public static function purchaseItem($product)
@@ -149,7 +182,10 @@ class GTM {
     /**
      * Refund an ecommerce transaction
      *
+     * @since 1.0.0
+     *
      * @param string $id The id of the transaction to refund
+     *
      * @return void
      */
     public static function refundTransaction($id)
@@ -160,9 +196,12 @@ class GTM {
     /**
      * Refund an ecommerce transaction item
      *
+     * @since 1.0.0
+     *
      * @param string $id        The id of the transaction
      * @param string $productId The id of the item
      * @param int    $quantity  The quantity to refund
+     *
      * @return void
      */
     public static function refundItem($id, $productId, $quantity)
