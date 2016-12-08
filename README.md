@@ -4,15 +4,14 @@
 [![Total Downloads](https://poser.pugx.org/cyber-duck/silverstripe-google-tag-manager/downloads)](https://packagist.org/packages/cyber-duck/silverstripe-google-tag-manager)
 [![License](https://poser.pugx.org/cyber-duck/silverstripe-google-tag-manager/license)](https://packagist.org/packages/cyber-duck/silverstripe-google-tag-manager)
 
-A Silverstripe module to add Google Tag Manager Version 2 datalayer, event, and ecommerce integration. Using simple functions push any values you want to the datalayer for full Tag Manager integration within Silverstripe. The module genreates a formatted json dataLayer which can be accessed easily through the Google Tag Manager UI. 
-
 Author: [Andrew Mc Cormack](https://github.com/Andrew-Mc-Cormack)
 
-Key Features
+A Silverstripe module to add Google Tag Manager Version 2 datalayer, event, and ecommerce integration. Using simple functions push any values you want to the datalayer for full Tag Manager integration within Silverstripe. The module genreates a formatted json dataLayer which can be accessed easily through the Google Tag Manager UI. 
+
+## Features
+
   - Push datalayer key value pairs easily
   - Push events to trigger Tag Manager tags
-
-Ecommerce Features
   - Set ecommerce currency code
   - Set product impressions
   - Set product promotions
@@ -42,7 +41,6 @@ Ecommerce Features
     - [Pushing a remove from cart action](/docs/ecommerce#pushing-a-remove-from-cart-action)
     - [Pushing a purchase transaction and items](/docs/ecommerce#pushing-a-purchase-transaction-and-items)
     - [Refunding a transaction or items](/docs/ecommerce#refunding-a-transaction-or-items)
-
 
 ## License
 
@@ -75,8 +73,3 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 ```
-
-### Todo
-
-  - Add list support
-  - Record current event and reset data layer
