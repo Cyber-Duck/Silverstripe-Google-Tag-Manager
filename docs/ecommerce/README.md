@@ -23,7 +23,7 @@ dataLayer.push({
 To push a product impression pass an array of product fields.
 
 ```php
-$impression = array(
+$impression = [
     'name'     => 'Triblend Android T-Shirt',
     'id'       => '12345',
     'price'    => '15.25',
@@ -32,7 +32,7 @@ $impression = array(
     'variant'  => 'Gray',
     'list'     => 'Search Results',
     'position' => 1
-);
+];
 GTM::productImpression($product)
 ```
 
@@ -61,12 +61,12 @@ dataLayer.push({
 ## Pushing a product promotion impression
 
 ```php
-$product = array(
+$product = [
     'id'       => 'JUNE_PROMO13',
     'name'     => 'June Sale',
     'creative' => 'banner1',
     'position' => 'slot1'
-);
+];
 GTM::productPromoImpression($product)
 ```
 
@@ -92,14 +92,14 @@ dataLayer.push({
 ## Pushing a product detail view
 
 ```php
-$product = array(
+$product = [
     'name'     => 'Triblend Android T-Shirt',
     'id'       => '12345',
     'price'    => '15.25',
     'brand'    => 'Google',
     'category' => 'Apparel',
     'variant'  => 'Gray'
-);
+];
 GTM::productDetail($product);
 ```
 
@@ -127,7 +127,7 @@ dataLayer.push({
 ## Pushing an add to cart action
 
 ```php
-$product = array(
+$product = [
     'name'     => 'Triblend Android T-Shirt',
     'id'       => '12345',
     'price'    => '15.25',
@@ -135,7 +135,7 @@ $product = array(
     'category' => 'Apparel',
     'variant'  => 'Gray',
     'quantity' => 1
-);
+];
 GTM::addToCart($product);
 ```
 
@@ -165,7 +165,7 @@ dataLayer.push({
 ## Pushing a remove from cart action
 
 ```php
-$product = array(
+$product = [
     'name'     => 'Triblend Android T-Shirt',
     'id'       => '12345',
     'price'    => '15.25',
@@ -173,7 +173,7 @@ $product = array(
     'category' => 'Apparel',
     'variant'  => 'Gray',
     'quantity' => 1
-);
+];
 GTM::removeFromCart($product);
 ```
 
@@ -203,17 +203,17 @@ dataLayer.push({
 ## Pushing a purchase transaction and items
 
 ```php
-$transaction = array(
+$transaction = [
     'id'          => 'T12345',
     'affiliation' => 'Online Store',
     'revenue'     => '35.43',
     'tax'         => '4.90',
     'shipping'    => '5.99',
     'coupon'      => 'SUMMER_SALE'
-);
+];
 GTM::purchase($transaction);
 
-$product = array(
+$product = [
     'name'     => 'Donut Friday Scented T-Shirt',
     'id'       => '67890',
     'price'    => '33.75',
@@ -221,7 +221,7 @@ $product = array(
     'category' => 'Apparel',
     'variant'  => 'Black',
     'quantity' => 1
-);
+];
 GTM::purchaseItem($product);
 ```
 

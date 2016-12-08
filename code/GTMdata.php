@@ -94,10 +94,10 @@ class GTMdata
      */
     public static function pushProductImpression($fields)
     {
-        $defaults = array(
+        $defaults = [
             'id'   => '',
             'name' => ''
-        );
+        ];
         self::$data['ecommerce']['impressions'][] = self::getDefaults($fields, $defaults);
     }
 
@@ -112,10 +112,10 @@ class GTMdata
      */
     public static function pushProductPromoImpression($fields)
     {
-        $defaults = array(
+        $defaults = [
             'id'   => '',
             'name' => ''
-        );
+        ];
         self::$data['ecommerce']['promoView']['promotions'][] = self::getDefaults($fields, $defaults);
     }
 
@@ -130,10 +130,10 @@ class GTMdata
      */
     public static function pushProductDetail($fields)
     {
-        $defaults = array(
+        $defaults = [
             'id'   => '',
             'name' => ''
-        );
+        ];
         self::$data['ecommerce']['detail']['products'][] = self::getDefaults($fields, $defaults);
     }
 
@@ -176,14 +176,14 @@ class GTMdata
      */
     public static function pushPurchase($fields)
     {
-        $defaults = array(
+        $defaults = [
             'id'           => '',
             'currencyCode' => self::$currency,
             'affiliation'  => '',
             'revenue'      => '0.00',
             'tax'          => '0.00',
             'shipping'     => '0.00'
-        );
+        ];
         self::$data['ecommerce']['purchase']['actionField'] = self::getDefaults($fields, $defaults);
     }
 
@@ -198,10 +198,10 @@ class GTMdata
      */
     public static function pushPurchaseItem($fields)
     {
-        $defaults = array(
+        $defaults = [
             'id'   => '',
             'name' => ''
-        );
+        ];
         self::$data['ecommerce']['purchase']['products'][] = self::getDefaults($fields, $defaults);
     }
 
@@ -216,7 +216,7 @@ class GTMdata
      */
     public static function pushRefundTransaction($id)
     {
-        self::$data['ecommerce']['refund']['actionField'] = array('id' => $id);
+        self::$data['ecommerce']['refund']['actionField'] = ['id' => $id];
     }
 
     /**
@@ -234,7 +234,7 @@ class GTMdata
     {
         self::pushRefundTransaction($id);
 
-        self::$data['ecommerce']['refund']['products'][] = array('id' => $productId, 'quantity' => $quantity);
+        self::$data['ecommerce']['refund']['products'][] = ['id' => $productId, 'quantity' => $quantity];
     }
 
     /**
@@ -252,11 +252,11 @@ class GTMdata
     {
         self::pushCurrent();
 
-        $defaults = array(
+        $defaults = [
             'id'       => '',
             'name'     => '',
             'quantity' => 1
-        );
+        ];
         self::$data['ecommerce'][$action]['products'][] = self::getDefaults($fields, $defaults);
 
         // add to cart actions require their own event action and push
@@ -309,7 +309,7 @@ class GTMdata
     {
         if (!empty(self::$data)) {
             self::$json .= 'dataLayer.push('.json_encode(self::$data, JSON_PRETTY_PRINT).');';
-            self::$data = array();
+            self::$data = [];
         }
     }
 

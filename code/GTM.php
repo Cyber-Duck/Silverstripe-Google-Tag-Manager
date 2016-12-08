@@ -31,10 +31,10 @@ class GTM
 	 */
 	public static function snippet($id)
 	{
-		return Controller::curr()->customise(array(
+		return Controller::curr()->customise([
 			'ID'   => $id, 
 			'Data' => GTMdata::getDataLayer()
-		))->renderWith('TagManager');
+		])->renderWith('TagManager');
 	}
 
     /**
