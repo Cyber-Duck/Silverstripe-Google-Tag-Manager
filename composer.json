@@ -22,9 +22,10 @@
     "extra": {
         "installer-name": "gtm"
     },
-    "require":
-    {
-        "php": ">=5.4.0"
+    "require": {
+        "php": ">=5.4.0",
+        "composer/installers": "*",
+        "silverstripe/framework": ">=3.0.1"
     },
     "prefer-stable": true
 }
