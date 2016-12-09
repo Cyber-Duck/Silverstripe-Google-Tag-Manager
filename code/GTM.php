@@ -17,25 +17,25 @@
  **/
 class GTM
 {
-	/**
-	 * Returns the complete data layer and Google Tag Manager snippet. Inject in 
-	 * the container ID (GTM-XXXXX). Only the XXXXX part is required for injection.
-	 * Creating the data layer and snippet this way stops any issues with data layer
-	 * values being populated after the snippet is called.
+    /**
+     * Returns the complete data layer and Google Tag Manager snippet. Inject in 
+     * the container ID (GTM-XXXXX). Only the XXXXX part is required for injection.
+     * Creating the data layer and snippet this way stops any issues with data layer
+     * values being populated after the snippet is called.
      *
      * @since 1.0.0
-	 *
-	 * @param string $id Your container ID
-	 *
-	 * @return string
-	 */
-	public static function snippet($id)
-	{
-		return Controller::curr()->customise([
-			'ID'   => $id, 
-			'Data' => GTMdata::getDataLayer()
-		])->renderWith('TagManager');
-	}
+     *
+     * @param string $id Your container ID
+     *
+     * @return string
+     */
+    public static function snippet($id)
+    {
+        return Controller::curr()->customise([
+            'ID'   => $id, 
+            'Data' => GTMdata::getDataLayer()
+        ])->renderWith('TagManager');
+    }
 
     /**
      * Set a dataLayer key value pair

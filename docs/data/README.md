@@ -13,7 +13,7 @@ outputs:
 ```javascript  
 window.dataLayer = window.dataLayer || [];
 dataLayer = [{
-	'key' : 'value'
+    'key' : 'value'
 }];
 ```
 
@@ -29,7 +29,7 @@ outputs:
 
 ```javascript  
 dataLayer = [{
-	'event' : 'MyEvent'
+    'event' : 'MyEvent'
 }];
 ```
 

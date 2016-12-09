@@ -78,7 +78,7 @@ class GTMdata
      */
     public static function pushTransactionCurrency($code)
     {
-    	self::$currency = $code;
+        self::$currency = $code;
 
         self::$data['ecommerce']['currencyCode'] = $code;
     }
