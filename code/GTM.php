@@ -1,6 +1,6 @@
 <?php
 /**
- * Google Tag Manager
+ * GTM
  *
  * A module to allow the easy implementation of Google Tag Manager within the 
  * Silverstripe framework. The GTM module is meant to cater for any features of 
@@ -12,7 +12,7 @@
  * Tag Manager snippet. 
  *
  * @package silverstripe-google-tag-manager
- * @license MIT License https://github.com/Cyber-Duck/Silverstripe-Google-Tag-Manager/blob/master/LICENSE
+ * @license MIT License https://github.com/cyber-duck/silverstripe-google-tag-manager/blob/master/LICENSE
  * @author  <andrewm@cyber-duck.co.uk>
  **/
 class GTM

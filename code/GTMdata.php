@@ -1,6 +1,6 @@
 <?php
 /**
- * Google Tag Manager Data class
+ * GTMdata
  *
  * This class creates a persistent container for all dataLayer values and is 
  * used by the GTM class to store and retrieve data.
