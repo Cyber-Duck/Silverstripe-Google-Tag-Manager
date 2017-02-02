@@ -7,18 +7,26 @@ All notable changes to this project will be documented in this file.
 8th Decemeber 2016
 
 ### Added
-  
-  - Require PHP version >=5.4.0 in composer.json
-  - @since *.*.* to all class methods and properties
+
+  - .editorconfig file
+  - .gitattributes file
+  - .gitignore file
+  - .scrutinizer file
   - CHANGELOG.md File
   - CONTRIBUTING.md file
-  - CHANGELOG.md file
-  - .scrutinizer.yml file
-  - .gitattributes file
-  - .editorconfig file
-  - .ignore file
 
 ### Changed
   
-  - Use shorthand [] array syntax
   - License info
+  - Composer description
+  - Update README
+  - Update code comments
+  - Use shorthand array syntax
+
+## Version 1.0.0
+
+30th August 2016
+
+### Added
+  
+  - Core functionality
