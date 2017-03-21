@@ -1,7 +1,7 @@
 # Silverstripe - Google Tag Manager
 
 [![Latest Stable Version](https://poser.pugx.org/cyber-duck/silverstripe-google-tag-manager/v/stable)](https://packagist.org/packages/cyber-duck/silverstripe-google-tag-manager)
-[![Latest Unstable Version](https://poser.pugx.org/cyber-duck/silverstripe-block-page/v/unstable)](https://packagist.org/packages/cyber-duck/silverstripe-block-page)
+[![Latest Unstable Version](https://poser.pugx.org/cyber-duck/silverstripe-google-tag-manager/v/unstable)](https://packagist.org/packages/cyber-duck/silverstripe-google-tag-manager)
 [![Total Downloads](https://poser.pugx.org/cyber-duck/silverstripe-google-tag-manager/downloads)](https://packagist.org/packages/cyber-duck/silverstripe-google-tag-manager)
 [![License](https://poser.pugx.org/cyber-duck/silverstripe-google-tag-manager/license)](https://packagist.org/packages/cyber-duck/silverstripe-google-tag-manager)
 
