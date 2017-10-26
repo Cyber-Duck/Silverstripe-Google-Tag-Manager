@@ -28,7 +28,7 @@ A Silverstripe module to add Google Tag Manager Version 2 datalayer, event, and 
   
   - [Installation](/docs/installation)
     - [Composer](/docs/installation#composer)
-    - [Controller and View](/docs/installation#controller-and-view)
+    - [Package Namespace](/docs/installation#package-namespace)
     - [Validating your Search Console property](/docs/installation#validating-your-search-console-property)
   - [Pushing Data](/docs/data)
     - [Pushing to the data layer](/docs/data#pushing-to-the-data-layer)

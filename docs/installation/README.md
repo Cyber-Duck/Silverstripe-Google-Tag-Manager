@@ -7,28 +7,31 @@ Add the following to your composer.json file
 ```json
 {  
     "require": {  
-        "cyber-duck/silverstripe-google-tag-manager": "1.0.*"
+        "cyber-duck/silverstripe-google-tag-manager": "4.0.*"
     }
 }
 ```
 
 Run composer and then flush the Silverstripe cache (add ?flush=all to your URL and reload the page)
 
-## Controller
+## Package Namespace
+
+All classes can be referenced via:
+
+CyberDuck\GTM
+
+e.g CyberDuck\GTM\GTM::snippet();
+
+## Configuring your container ID
 
 Add the following method to the Page_Controller in your Page.php file located in your code folder. Replace XXXXX with the ID of your container which you can get from the Tag Manager interface. It takes the format GTM-XXXXX, however you don't need to include the GTM part.
 
-```php
-class Page_Controller extends ContentController {
-
-    public function TagManager()
-    {
-        return GTM::snippet('XXXXX');
-    }
-}
+```yml
+CyberDuck\GTM\GTM
+  container_id: 123456
 ```
 
-Within your Page.ss template or similar add the $TagManager variable after your opening body tag to call your controller method.
+Within your Page.ss template or similar add the $TagManager variable after your opening body tag to call the GTM snippet code.
 
 ```php
 <body>
