@@ -30,14 +30,12 @@ class GTM
      *
      * @since 1.0.0
      *
-     * @param string $id Your container ID
-     *
      * @return string
      */
-    public static function snippet($id)
+    public static function snippet()
     {
         return Controller::curr()->customise([
-            'ID'   => $id, 
+            'ID'   => Config::inst()->get('GTM', 'container_id'),
             'Data' => GTMdata::getDataLayer()
         ])->renderWith('TagManager');
     }
