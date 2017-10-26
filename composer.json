@@ -5,6 +5,8 @@
     "homepage": "http://github.com/cyber-duck/silverstripe-google-tag-manager",
     "keywords": [
         "silverstripe",
+        "silverstripe 4",
+        "gtm",
         "google tag manager",
         "website tracking",
         "google analytics"
