@@ -1,4 +1,9 @@
 <?php
+
+namespace CyberDuck\GTM;
+
+use SilverStripe\Control\Controller;
+
 /**
  * GTM
  *
