@@ -36,7 +36,7 @@ class GTM
     public static function snippet()
     {
         return Controller::curr()->customise([
-            'ID'   => Config::inst()->get('GTM', 'container_id'),
+            'ID'   => Config::inst()->get('CyberDuck\GTM\GTM', 'container_id'),
             'Data' => GTMdata::getDataLayer()
         ])->renderWith('TagManager');
     }
