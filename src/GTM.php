@@ -3,6 +3,7 @@
 namespace CyberDuck\GTM;
 
 use SilverStripe\Control\Controller;
+use SilverStripe\Core\Config\Config;
 
 /**
  * GTM
