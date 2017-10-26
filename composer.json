@@ -33,11 +33,7 @@
         }
     },
     "extra": {
-        "installer-name": "gtm",
-        "expose": [
-            "css",
-            "js"
-        ]
+        "installer-name": "gtm"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
