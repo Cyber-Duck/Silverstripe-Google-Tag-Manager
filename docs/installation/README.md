@@ -24,7 +24,7 @@ e.g CyberDuck\GTM\GTM::snippet();
 
 ## Configuring your container ID
 
-Add the following method to the Page_Controller in your Page.php file located in your code folder. Replace XXXXX with the ID of your container which you can get from the Tag Manager interface. It takes the format GTM-XXXXX, however you don't need to include the GTM part.
+Add your container ID which you can get from the Tag Manager interface to the YML config. It takes the format GTM-XXXXX, however you don't need to include the GTM part.
 
 ```yml
 CyberDuck\GTM\GTM
