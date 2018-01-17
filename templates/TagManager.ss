@@ -1,7 +1,7 @@
 <% if $Data %>
 <script>
 window.dataLayer = window.dataLayer || [];
-$Data
+$Data.RAW
 </script>
 <% end_if %>
 <!-- Google Tag Manager -->
