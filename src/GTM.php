@@ -155,6 +155,31 @@ class GTM
     }
 
     /**
+     * Add an ecommerce checkout
+     *
+     * @param array $fields An array of purchase fields
+     *
+     * @return void
+     */
+    public static function checkoutStep($fields)
+    {
+        GTMdata::pushCheckoutStep($fields);
+    }
+
+    /**
+     * Add an ecommerce checkout item
+     * Used in conjunction with ->checkoutStep()
+     *     
+     * @param mixed $product An array of item fields
+     *
+     * @return void
+     */
+    public static function checkoutItem($product)
+    {
+        GTMdata::pushCheckoutItem($product);
+    }
+
+    /**
      * Add an ecommerce transaction
      *
      * @since 1.0.0
