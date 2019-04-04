@@ -169,6 +169,40 @@ class GTMdata
     }
 
     /**
+     * Push the current checkout step to the data array
+     *
+     * @param array $fields An array of item fields
+     * 
+     * @return void
+     */
+    public static function pushCheckoutStep($fields)
+    {
+        $defaults = [
+            'step'           => ''
+        ];
+        self::pushEvent('checkout');
+        self::$data['ecommerce']['checkout']['actionField'] = self::getDefaults($fields, $defaults);
+    }
+
+    /**
+     * Push a checkout item fields to the data array
+     *
+     * @since 1.0.0
+     *
+     * @param array $fields An array of a purchase item fields
+     *
+     * @return void
+     */
+    public static function pushCheckoutItem($fields)
+    {
+        $defaults = [
+            'id'   => '',
+            'name' => ''
+        ];
+        self::$data['ecommerce']['checkout']['products'][] = self::getDefaults($fields, $defaults);
+    }
+
+    /**
      * Push a purchase to the data array
      *
      * @since 1.0.0
