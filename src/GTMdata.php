@@ -335,11 +335,11 @@ class GTMdata
     private function __clone(){}
 
     /**
-     * Private wakeup
+     * wakeup
      *
      * @since version 1.0.0
      *
      * @return void
      **/
-    private function __wakeup(){}
+    public function __wakeup(){}
 }
