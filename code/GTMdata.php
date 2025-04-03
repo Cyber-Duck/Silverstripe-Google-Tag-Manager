@@ -2,7 +2,7 @@
 /**
  * GTMdata
  *
- * This class creates a persistent container for all dataLayer values and is 
+ * This class creates a persistent container for all dataLayer values and is
  * used by the GTM class to store and retrieve data.
  *
  * @package silverstripe-google-tag-manager
@@ -338,5 +338,5 @@ class GTMdata
      *
      * @return void
      **/
-    private function __wakeup(){}
+    public function __wakeup(){}
 }
